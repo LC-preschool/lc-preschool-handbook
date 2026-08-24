@@ -509,7 +509,7 @@
       <div class="role-grid">
         <div class="role-card">
           <span class="role-badge">정교사 (Full Teacher)</span>
-          <strong>영적 목양 및 공과 인도</strong>
+          <div style="font-size: 13.5px; font-weight: bold; color: var(--navy-900); margin-bottom: 4px;">영적 목양 및 공과 인도</div>
           <ul style="padding-left: 16px; margin-bottom: 0;">
             <li>본 교회 등록 후 <strong>최소 3개월 이상</strong> 신실하게 출석한 성도.</li>
             <li>구원의 확신이 분명한 <strong>세례교인(입교인)</strong> 또는 빠른 시일 내 세례 예정자.</li>
@@ -519,7 +519,7 @@
 
         <div class="role-card">
           <span class="role-badge">보조교사 (Assistant Teacher)</span>
-          <strong>예배 질서 및 케어 동역</strong>
+          <div style="font-size: 13.5px; font-weight: bold; color: var(--navy-900); margin-bottom: 4px;">예배 질서 및 케어 동역</div>
           <ul style="padding-left: 16px; margin-bottom: 0;">
             <li>본 교회 등록 후 <strong>3개월 이상</strong> 출석 중인 성도 및 대학부 헌신자.</li>
             <li>세례 자격 요건은 필수가 아니며, 성실한 신앙과 사랑으로 동역.</li>
@@ -627,8 +627,8 @@
       <!-- Basic Info -->
       <div class="form-grid-2">
         <div class="form-group">
-          <label for="teacherName">성명 (Full Name) *</label>
-          <input type="text" id="teacherName" class="form-input" placeholder="예: 김주은" required>
+          <label for="teacherName">성명 (반드시 한글 성명으로 기재) *</label>
+          <input type="text" id="teacherName" class="form-input" placeholder="예: 김주은 (한글 성명)" required>
         </div>
 
         <div class="form-group">
@@ -644,12 +644,12 @@
       <div class="form-grid-2">
         <div class="form-group">
           <label for="teacherDob">생년월일 (Date of Birth) *</label>
-          <input type="text" id="teacherDob" class="form-input" placeholder="MM/DD/YYYY 또는 YYYY.MM.DD" required>
+          <input type="text" id="teacherDob" class="form-input" placeholder="MM/DD/YYYY (숫자만 8자리 입력)" maxlength="10" oninput="autoFormatDob(this)" required>
         </div>
 
         <div class="form-group">
           <label for="teacherPhone">연락처 (Phone Number) *</label>
-          <input type="tel" id="teacherPhone" class="form-input" placeholder="512-000-0000" required>
+          <input type="tel" id="teacherPhone" class="form-input" placeholder="512-000-0000 (숫자만 입력)" maxlength="12" oninput="autoFormatPhone(this)" required>
         </div>
       </div>
 
@@ -712,7 +712,7 @@
         </td>
       </tr>
       <tr>
-        <th>성 명</th>
+        <th>성 명 (한글)</th>
         <td></td>
         <th>사역 직분</th>
         <td>[ &nbsp; ] 정교사 &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] 보조교사</td>
@@ -762,6 +762,30 @@
   const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyEoowETKSQ84SKBWQHUSRFYH8j1x9LsPwFf6U6yqWJA3_-tCLGoxmkGwvQisDvQF7M/exec";
   const ADMIN_EMAIL = "preschool@lcaustin.org";
   let signaturePad;
+
+  // 생년월일 자동 슬래시(/) 포맷팅 (MM/DD/YYYY)
+  function autoFormatDob(el) {
+    let v = el.value.replace(/\D/g, '').slice(0, 8);
+    if (v.length >= 5) {
+      el.value = `${v.slice(0, 2)}/${v.slice(2, 4)}/${v.slice(4)}`;
+    } else if (v.length >= 3) {
+      el.value = `${v.slice(0, 2)}/${v.slice(2)}`;
+    } else {
+      el.value = v;
+    }
+  }
+
+  // 연락처 자동 하이픈(-) 포맷팅 (000-000-0000)
+  function autoFormatPhone(el) {
+    let v = el.value.replace(/\D/g, '').slice(0, 10);
+    if (v.length >= 7) {
+      el.value = `${v.slice(0, 3)}-${v.slice(3, 6)}-${v.slice(6)}`;
+    } else if (v.length >= 4) {
+      el.value = `${v.slice(0, 3)}-${v.slice(3)}`;
+    } else {
+      el.value = v;
+    }
+  }
 
   window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('sigCanvas');
@@ -899,7 +923,7 @@
       if (resJson.result === "success") {
         alert("🎉 유아부 교사 서약서가 성공적으로 제출되었습니다!\n\n서명된 PDF 사본이 선생님 이메일과 담당자(preschool@lcaustin.org)에게 발송되었으며, 구글 드라이브에 안전하게 보관되었습니다.");
         
-        // 폼 리셋, 서명 지우기, 맨 위로 스크롤 후 완전 새로고침
+        // 폼 초기화 및 상단으로 새로고침
         document.getElementById('covenantForm').reset();
         clearSig();
         window.scrollTo(0, 0);
