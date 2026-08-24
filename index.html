@@ -1,35 +1,853 @@
-<div class="form-grid">
-  <div class="form-group">
-    <label for="teacherName">성명 (Full Name) *</label>
-    <input type="text" id="teacherName" class="form-input" placeholder="예: 김주은" required>
-  </div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유아부 교사 지침서 및 사역 서약서 | 어스틴 주님의 교회</title>
+  
+  <!-- Google Fonts & Signature Pad -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 
-  <div class="form-group">
-    <label for="teacherRole">사역 직분 (Role) *</label>
-    <select id="teacherRole" class="form-select" required>
-      <option value="">직분을 선택해주세요</option>
-      <option value="정교사 (Full Teacher)">정교사 (Full Teacher)</option>
-      <option value="보조교사 (Assistant Teacher)">보조교사 (Assistant Teacher)</option>
-    </select>
-  </div>
+  <style>
+    :root {
+      --brand-pink-light: #fdf2f8;
+      --brand-pink-subtle: #fce7f3;
+      --brand-pink: #fbcfe8;
+      --brand-pink-primary: #db2777;
+      --brand-pink-deep: #be185d;
+      --brand-green-accent: #65a30d;
+      --brand-blue-accent: #0284c7;
+      --navy-900: #0f172a;
+      --navy-800: #1e293b;
+      --slate-600: #475569;
+      --slate-200: #e2e8f0;
+      --card-shadow: 0 16px 24px -6px rgba(219, 39, 119, 0.12), 0 6px 10px -4px rgba(0, 0, 0, 0.04);
+    }
 
-  <div class="form-group">
-    <label for="teacherDob">생년월일 (Date of Birth) *</label>
-    <input type="text" id="teacherDob" class="form-input" placeholder="MM/DD/YYYY 또는 YYYY.MM.DD" required>
-  </div>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <div class="form-group">
-    <label for="teacherPhone">연락처 (Phone Number) *</label>
-    <input type="tel" id="teacherPhone" class="form-input" placeholder="512-000-0000" required>
-  </div>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+      background-color: #fdf8fa;
+      color: var(--navy-800);
+      line-height: 1.6;
+      padding: 36px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <div class="form-group">
-    <label for="teacherEmail">이메일 (Email Address) *</label>
-    <input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required>
-  </div>
+    .app-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      border: 1.5px solid var(--brand-pink);
+      overflow: hidden;
+      position: relative;
+    }
 
-  <div class="form-group">
-    <label for="teacherAddress">거주지 주소 (Home Address) *</label>
-    <input type="text" id="teacherAddress" class="form-input" placeholder="Street, City, State, ZIP" required>
-  </div>
+    /* Hero Header */
+    .hero-header {
+      background: linear-gradient(135deg, #fff0f7 0%, #fce7f3 60%, #fbcfe8 100%);
+      padding: 32px 28px 26px 28px;
+      text-align: center;
+      border-bottom: 2px solid #fbcfe8;
+    }
+
+    .official-logo {
+      width: 105px;
+      height: 105px;
+      object-fit: contain;
+      margin: 0 auto 10px auto;
+      display: block;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 4px;
+      box-shadow: 0 6px 14px rgba(219, 39, 119, 0.18);
+      border: 2px solid #ffffff;
+    }
+
+    .church-badge {
+      display: inline-block;
+      background: #ffffff;
+      color: var(--brand-pink-deep);
+      font-weight: 800;
+      font-size: 11.5px;
+      padding: 3px 14px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+      letter-spacing: 0.8px;
+      box-shadow: 0 2px 5px rgba(219, 39, 119, 0.1);
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy-900);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: var(--brand-pink-deep);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Content Body */
+    .content-body {
+      padding: 30px 36px 14px 36px;
+    }
+
+    .section-block {
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      border-bottom: 2px solid var(--brand-pink-subtle);
+      padding-bottom: 6px;
+    }
+
+    h2::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 18px;
+      background: var(--brand-pink-primary);
+      border-radius: 4px;
+    }
+
+    p, li {
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 6px;
+      word-break: keep-all;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    li { margin-bottom: 5px; }
+
+    /* Quote Card */
+    .quote-card {
+      background: var(--brand-pink-light);
+      border-left: 4px solid var(--brand-pink-primary);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      margin: 10px 0 14px 0;
+      color: #831843;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Role Matrix Grid */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .role-card {
+      background: #fffdfa;
+      border: 1.5px solid var(--brand-pink);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .role-badge {
+      display: inline-block;
+      background: var(--brand-pink-subtle);
+      color: var(--brand-pink-deep);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+
+    .role-card strong {
+      display: block;
+      font-size: 14px;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    /* Policy Highlight Cards */
+    .policy-item {
+      background: #ffffff;
+      border: 1px solid #f1f5f9;
+      border-left: 4px solid var(--brand-pink-primary);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+    }
+
+    .policy-item strong {
+      color: var(--navy-900);
+      font-size: 13.5px;
+    }
+
+    .policy-tag {
+      background: var(--brand-pink-subtle);
+      color: var(--brand-pink-deep);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    /* Form Container */
+    .covenant-card {
+      background: #fffbfe;
+      border-top: 2px solid var(--brand-pink);
+      padding: 28px 36px;
+      position: relative;
+    }
+
+    .pledge-box {
+      background: #ffffff;
+      border: 1.5px solid var(--brand-pink);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--navy-900);
+      line-height: 1.6;
+    }
+
+    /* Consent Checkboxes */
+    .consent-group {
+      background: #ffffff;
+      border: 1px solid var(--brand-pink);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+    }
+
+    .consent-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .consent-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .consent-item input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--brand-pink-primary);
+      cursor: pointer;
+    }
+
+    .consent-text {
+      font-size: 12.5px;
+      color: var(--navy-900);
+      line-height: 1.45;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy-900);
+      margin-bottom: 4px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 13.5px;
+      background: #ffffff;
+      font-family: inherit;
+      color: var(--navy-900);
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--brand-pink-primary);
+      box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.15);
+    }
+
+    .signature-pad-wrapper {
+      background: #ffffff;
+      border: 2px dashed #cbd5e1;
+      border-radius: 10px;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 130px;
+      border-radius: 10px;
+      cursor: crosshair;
+    }
+
+    .clear-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #f1f5f9;
+      border: none;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #475569;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+      color: #ffffff;
+      font-size: 14.5px;
+      font-weight: 800;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 12px -3px rgba(219, 39, 119, 0.25);
+      transition: opacity 0.2s;
+    }
+
+    .submit-btn:hover { opacity: 0.95; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .discreet-admin-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      font-size: 11px;
+      color: #94a3b8;
+      opacity: 0.3;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .save-banner {
+      display: none;
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      z-index: 9999;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Print View for Physical Paper Document */
+    .print-only-table { display: none; }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        color: #000000;
+        font-size: 10pt;
+        line-height: 1.4;
+      }
+      .app-container {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+        border-radius: 0;
+      }
+      .hero-header {
+        padding: 10px 20px;
+        background: #fafafa !important;
+        -webkit-print-color-adjust: exact;
+        border-bottom: 1.5pt solid #ddd;
+      }
+      .official-logo {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 4px;
+      }
+      .hero-title { font-size: 14pt; }
+      .content-body, .covenant-card {
+        padding: 8px 20px;
+      }
+      .section-block { margin-bottom: 8px; }
+      h2 { font-size: 11.5pt; margin-bottom: 4px; padding-bottom: 2px; }
+      p, li { font-size: 9pt; margin-bottom: 2px; }
+      .quote-card, .policy-item, .role-card, .pledge-box {
+        border: 1px solid #ddd !important;
+        background: #fafafa !important;
+        -webkit-print-color-adjust: exact;
+        padding: 5px 8px;
+        margin: 3px 0;
+      }
+      .role-grid { gap: 6px; margin: 3px 0; }
+      .page-break {
+        page-break-after: always;
+        break-after: page;
+      }
+      
+      #covenantForm, .submit-btn, .clear-btn, .discreet-admin-btn, .save-banner {
+        display: none !important;
+      }
+
+      .print-only-table {
+        display: table !important;
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      .print-only-table th, .print-only-table td {
+        border: 1px solid #64748b;
+        padding: 5px 8px;
+        font-size: 9pt;
+      }
+      .print-only-table th {
+        background-color: #f1f5f9 !important;
+        width: 22%;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 0; }
+      .app-container { border-radius: 0; border: none; }
+      .content-body, .covenant-card { padding: 18px 14px; }
+      .role-grid, .form-grid { grid-template-columns: 1fr; }
+      .form-group.full-width { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="saveBanner" class="save-banner" onclick="saveAndDownloadHTML()">
+  💾 변경사항 저장 및 index.html 다운로드
 </div>
+
+<div class="app-container">
+  
+  <!-- Header with Official Logo -->
+  <header class="hero-header">
+    <img src="preschool-logo.png" alt="The Sprouts of Jesus Logo" class="official-logo">
+    <div class="church-badge">THE LORD'S CHURCH OF AUSTIN</div>
+    <h1 class="hero-title">유아부 교사 지침서 및 사역 서약서</h1>
+    <p class="hero-subtitle">• The Sprouts of Jesus • 유아부 (Preschool Ministry)</p>
+  </header>
+
+  <!-- Main Content Body -->
+  <main class="content-body" id="handbookContent">
+    
+    <!-- 1. 사역 비전 및 목양 철학 -->
+    <section class="section-block">
+      <h2>1. 유아부 사역 비전 및 목양 철학</h2>
+      <div class="quote-card">
+        "대대로 주께서 행하시는 일을 크게 찬양하며 주의 능한 일을 선포하리로다" — <strong>시편 145:4</strong>[cite: 3]<br>
+        "어린 아이들이 내게 오는 것을 용납하고 금하지 말라 하나님의 나라가 이런 자의 것이니라" — <strong>마가복음 10:14</strong>
+      </div>
+      <p>어스틴 주님의 교회 유아부(The Sprouts of Jesus)는 예수님의 보혈과 사랑 안에서 자라나는 가장 어린 자녀들에게 하나님의 성품과 복음을 전수하는 거룩한 첫 신앙의 요람입니다[cite: 3]. 유아부 교사는 단순한 돌봄 인력이 아닌, 믿음의 선행 세대로서 아이들을 기도로 파수하는 영적 파수꾼입니다[cite: 3].</p>
+    </section>
+
+    <!-- 2. 직분 구분 및 자격 요건 -->
+    <section class="section-block">
+      <h2>2. 직분 구분 및 신앙적 자격 요건</h2>
+      <p>유아부는 사역의 질서와 안전한 영적 돌봄을 위해 직분을 <strong>정교사</strong>와 <strong>보조교사</strong>로 구분하여 동역합니다.</p>
+      
+      <div class="role-grid">
+        <div class="role-card">
+          <span class="role-badge">정교사 (Full Teacher)</span>
+          <strong>영적 목양 및 공과 인도</strong>
+          <ul style="padding-left: 16px; margin-bottom: 0;">
+            <li>본 교회 등록 후 <strong>최소 3개월 이상</strong> 신실하게 출석한 성도[cite: 3].</li>
+            <li>구원의 확신이 분명한 <strong>세례교인(입교인)</strong> 또는 빠른 시일 내 세례 예정자[cite: 3].</li>
+            <li>예배 인도 보조, 반별 공과 지도 및 아동 영적 목양 총괄[cite: 3].</li>
+          </ul>
+        </div>
+
+        <div class="role-card">
+          <span class="role-badge">보조교사 (Assistant Teacher)</span>
+          <strong>예배 질서 및 케어 동역</strong>
+          <ul style="padding-left: 16px; margin-bottom: 0;">
+            <li>본 교회 등록 후 <strong>3개월 이상</strong> 출석 중인 성도 및 대학부 헌신자.</li>
+            <li>세례 자격 요건은 필수가 아니며, 성실한 신앙과 사랑으로 동역.</li>
+            <li>예배실 안전 관리, 활동/간식 보조 및 정서 안정 지원[cite: 3].</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Break Point for 2-Page Printing Layout -->
+    <div class="page-break"></div>
+
+    <!-- 3. 유아부 5대 핵심 안전 & 목양 프로토콜 -->
+    <section class="section-block">
+      <h2>3. 유아부 5대 핵심 안전 & 돌봄 수칙</h2>
+
+      <div class="policy-item">
+        <span class="policy-tag">화장실 & 기저귀 케어</span>
+        <strong>화장실 이용 프로토콜 (개방성 확보 원칙)</strong>
+        <p style="margin-top: 4px; margin-bottom: 0;">스스로 용변이 어려운 영유아는 성인 2인 동행이 원칙입니다[cite: 3]. 단, 현장 봉사자 인력 부족 시에는 <strong>화장실 메인 출입문을 외부에서 완전히 보이도록 활짝 개방한 상태</strong>에서 도움을 제공합니다[cite: 3]. <em>(어떠한 경우에도 봉사자 1인이 아동과 함께 닫힌 칸막이(Stall) 안으로 단둘이 들어가는 행위는 엄격히 금지되며[cite: 3], 설치된 비상벨을 적극 활용합니다.)</em></p>
+      </div>
+
+      <div class="policy-item">
+        <span class="policy-tag">신체 접촉 가이드</span>
+        <strong>정서적 안위 스킨십(Appropriate Touch)의 허용</strong>
+        <p style="margin-top: 4px; margin-bottom: 0;">예배실 및 부서실 등 <strong>공적이고 개방된 공간</strong>에서 넘어진 아동을 일으켜 세우거나[cite: 3], 분리불안으로 울거나 정서적으로 불안해하는 아동을 안심시키기 위해 따뜻하게 안아주는 안위 행위는 정당한 목양 돌봄으로 적극 인정됩니다[cite: 3].</p>
+      </div>
+
+      <div class="policy-item">
+        <span class="policy-tag">정서 폭발 & 훈육</span>
+        <strong>공정한 태도 및 3단계 부모 호출 프로토콜</strong>
+        <p style="margin-top: 4px; margin-bottom: 0;">모든 아동에게 편애 없이 공정(Fairness)한 태도를 유지합니다[cite: 3]. 아동이 극심한 정서적 폭발이나 지속적인 울음으로 예배 참여가 불가능할 경우: <strong>[1단계] 교사의 부드러운 관심 전환 → [2단계] 개방된 안정 공간으로 2인 동행 이동[cite: 3] → [3단계] 대예배실 부모/보호자 즉각 호출</strong>을 신속히 가동합니다[cite: 3].</p>
+      </div>
+
+      <div class="policy-item">
+        <span class="policy-tag">알레르기 & 물품</span>
+        <strong>급성 알레르기(에피펜) 대응 및 물품 행정</strong>
+        <p style="margin-top: 4px; margin-bottom: 0;">간식 전 새가족 카드의 특이 의학 정보를 필히 확인합니다[cite: 3]. 아나필락시스 쇼크 시 소지된 에피펜(EpiPen)을 즉각 투여하고 911을 호출합니다[cite: 3]. 부서 필요 물품은 부서 예산($500 이하 부장 승인)으로 구매하되[cite: 3], 전체 구급함 정기 Refill은 교회 행정실(행정목사님)을 통해 지원받습니다.</p>
+      </div>
+
+      <div class="policy-item">
+        <span class="policy-tag">체크인 & 픽업</span>
+        <strong>안전한 아동 인도(Pick-up Tag Matching)</strong>
+        <p style="margin-top: 4px; margin-bottom: 0;">예배 전 체크인 시 발급된 <strong>'부모 확인 태그(Name Tag Match)' 또는 공식 서명 확인</strong>을 거친 지정 보호자에게만 아동을 인도하며, 확인되지 않은 타인이나 미성년 형제자매에게는 인도를 엄격히 금지합니다.</p>
+      </div>
+    </section>
+
+    <!-- 4. 교사 윤리, 법적 안전 및 개인정보 보안 -->
+    <section class="section-block">
+      <h2>4. 교사 윤리, 법적 안전 및 보안 의무</h2>
+      <ul>
+        <li><strong>신원 조회 및 안전 교육 의무:</strong> 아동 보호를 위해 범죄 경력 조회(Criminal Background Check)에 동의하고, 연례 아동 보호 정책(CPP) 교육을 이수합니다[cite: 3].</li>
+        <li><strong>법적 의무 보고자(Mandatory Reporter):</strong> 텍사스 주법(Texas Family Code Ch. 261)에 따라 아동 학대/방임 징후 발견 시 지체 없이 교역자에게 구두 보고합니다[cite: 3].</li>
+        <li><strong>비밀유지 및 가십 금지:</strong> 사역 중 알게 된 아동의 발달 상태, 가정사 등은 기도의 제목으로만 삼으며 외부로 누설하지 않습니다[cite: 3].</li>
+        <li><strong>개인 SNS 유포 금지:</strong> 아동의 얼굴이나 신원이 드러난 사진을 교회의 공적 승인 없이 봉사자 개인 SNS에 게재하는 행위를 금합니다[cite: 3].</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- 5. Interactive Covenant & Sign-off Form -->
+  <section class="covenant-card">
+    <h2>5. 유아부 교사 사역 서약서 (Covenant)</h2>
+    
+    <div class="pledge-box">
+      <strong>[유아부 교사 서약]</strong><br>
+      "본인은 어스틴 주님의 교회 유아부 봉사자로서 위의 지침을 신실하게 준수하며, 하나님께서 맡겨주신 어린 영혼들을 사랑과 온유함, 그리고 안전한 영적 울타리 안에서 성실히 돌보고 섬길 것을 하나님과 교회 앞에 엄숙히 서약합니다."
+    </div>
+
+    <!-- Web Interactive Form -->
+    <form id="covenantForm" onsubmit="handleFormSubmit(event)">
+      
+      <!-- 3 Essential Consent Checkboxes -->
+      <div class="consent-group">
+        <label class="consent-item">
+          <input type="checkbox" id="consentBackground" required>
+          <span class="consent-text"><strong>[필수 동의]</strong> 아동 보호를 위한 신원 조회(Criminal Background Check) 진행 및 관련 행정 절차에 동의합니다.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" id="consentCpp" required>
+          <span class="consent-text"><strong>[필수 서약]</strong> 텍사스 주법에 따른 아동보호 안전 교육(CPP Training) 이수 및 의무 보고자(Mandatory Reporter) 역할을 성실히 이행할 것을 서약합니다.</span>
+        </label>
+        <label class="consent-item">
+          <input type="checkbox" id="consentPrivacy" required>
+          <span class="consent-text"><strong>[필수 서약]</strong> 아동의 개인정보 비밀유지 및 사적 SNS 사진 게재 금지 등 보안 규정을 철저히 준수하겠습니다.</span>
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="teacherName">성명 (Full Name) *</label>
+          <input type="text" id="teacherName" class="form-input" placeholder="예: 김주은" required>
+        </div>
+
+        <div class="form-group">
+          <label for="teacherRole">사역 직분 (Role) *</label>
+          <select id="teacherRole" class="form-select" required>
+            <option value="">직분을 선택해주세요</option>
+            <option value="정교사 (Full Teacher)">정교사 (Full Teacher)</option>
+            <option value="보조교사 (Assistant Teacher)">보조교사 (Assistant Teacher)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="teacherDob">생년월일 (Date of Birth) *</label>
+          <input type="text" id="teacherDob" class="form-input" placeholder="MM/DD/YYYY 또는 YYYY.MM.DD" required>
+        </div>
+
+        <div class="form-group">
+          <label for="teacherPhone">연락처 (Phone Number) *</label>
+          <input type="tel" id="teacherPhone" class="form-input" placeholder="512-000-0000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="teacherEmail">이메일 (Email Address) *</label>
+          <input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="teacherAddress">거주지 주소 (Home Address) *</label>
+          <input type="text" id="teacherAddress" class="form-input" placeholder="Street, City, State, ZIP" required>
+        </div>
+      </div>
+
+      <div class="form-group full-width">
+        <label>전자 서명 (Digital Signature - 마우스나 터치로 서명해주세요) *</label>
+        <div class="signature-pad-wrapper">
+          <button type="button" class="clear-btn" onclick="clearSig()">서명 지우기</button>
+          <canvas id="sigCanvas"></canvas>
+        </div>
+      </div>
+
+      <button type="submit" id="submitBtn" class="submit-btn">유아부 서약서 제출 및 완료</button>
+    </form>
+
+    <!-- Clean Paper Form Structure (Print-Only) -->
+    <table class="print-only-table">
+      <tr>
+        <th colspan="4" style="background-color: #fce7f3; text-align: center; font-weight: bold;">[법적 안전 및 사역 동의 서약]</th>
+      </tr>
+      <tr>
+        <td colspan="4" style="font-size: 8.5pt;">
+          ✓ [동의] 아동 보호를 위한 신원 조회(Background Check) 진행 및 관련 행정 절차에 동의합니다.<br>
+          ✓ [서약] 아동보호 안전 교육(CPP) 이수, 의무 보고자(Mandatory Reporter) 준수 및 비밀유지 의무를 성실히 이행합니다.
+        </td>
+      </tr>
+      <tr>
+        <th>성 명</th>
+        <td></td>
+        <th>사역 직분</th>
+        <td>[ &nbsp; ] 정교사 &nbsp;&nbsp;&nbsp;&nbsp; [ &nbsp; ] 보조교사</td>
+      </tr>
+      <tr>
+        <th>생년월일</th>
+        <td></td>
+        <th>연락처</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>이메일</th>
+        <td></td>
+        <th>거주 주소</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>서약 일자</th>
+        <td colspan="3">2026 년 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일</td>
+      </tr>
+      <tr>
+        <th>자필 서명</th>
+        <td colspan="3" style="height: 45px; vertical-align: bottom; text-align: right; color: #94a3b8;">
+          (인 또는 서명) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+
+    <!-- Discreet Admin Button (Passcode: 1004) -->
+    <span class="discreet-admin-btn" onclick="enableVisualEdit()">⚙️ Edit</span>
+  </section>
+
+</div>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div style="font-size: 22px;">📄 서약서 제출 및 PDF 저장 중...</div>
+  <p style="font-size: 13px; opacity: 0.85;">잠시만 기다려 주시면 등록이 완료됩니다.</p>
+</div>
+
+<script>
+  // 배포하신 웹앱 URL 연결 완료
+  const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyEoowETKSQ84SKBWQHUSRFYH8j1x9LsPwFf6U6yqWJA3_-tCLGoxmkGwvQisDvQF7M/exec";
+  const ADMIN_EMAIL = "preschool@lcaustin.org";
+  let signaturePad;
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('sigCanvas');
+    signaturePad = new SignaturePad(canvas, { 
+      backgroundColor: 'rgba(255, 255, 255, 0)',
+      penColor: '#0f172a'
+    });
+
+    function resizeCanvas() {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      const data = signaturePad.toData();
+      
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d").scale(ratio, ratio);
+      
+      signaturePad.clear();
+      if (data && data.length > 0) {
+        signaturePad.fromData(data);
+      }
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+  });
+
+  function clearSig() {
+    signaturePad.clear();
+  }
+
+  function enableVisualEdit() {
+    const code = prompt("관리자 암호를 입력하세요:");
+    if (code === "1004") {
+      const target = document.getElementById('handbookContent');
+      target.contentEditable = "true";
+      target.style.outline = "2px dashed #db2777";
+      target.style.borderRadius = "8px";
+      target.style.padding = "10px";
+      
+      document.getElementById('saveBanner').style.display = "block";
+      alert("✏️ 실시간 편집 모드가 활성화되었습니다.\n\n화면의 텍스트를 직접 수정하신 후, 상단 우측의 초록색 저장 버튼을 눌러 새 index.html을 다운로드하세요.");
+    } else if (code !== null) {
+      alert("비밀번호가 올바르지 않습니다.");
+    }
+  }
+
+  function saveAndDownloadHTML() {
+    const target = document.getElementById('handbookContent');
+    target.contentEditable = "false";
+    target.style.outline = "none";
+    target.style.padding = "0";
+    document.getElementById('saveBanner').style.display = "none";
+
+    const fullDoc = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+    const blob = new Blob([fullDoc], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    a.click();
+
+    alert("🎉 수정된 'index.html' 파일이 다운로드되었습니다!\n\nGitHub 저장소에 드래그하여 업로드하시면 즉시 웹사이트에 반영됩니다.");
+  }
+
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('teacherName').value.trim();
+    const role = document.getElementById('teacherRole').value.trim();
+    const dob = document.getElementById('teacherDob').value.trim();
+    const phone = document.getElementById('teacherPhone').value.trim();
+    const email = document.getElementById('teacherEmail').value.trim();
+    const address = document.getElementById('teacherAddress').value.trim();
+    const submitBtn = document.getElementById('submitBtn');
+
+    const consentBg = document.getElementById('consentBackground').checked;
+    const consentCpp = document.getElementById('consentCpp').checked;
+    const consentPriv = document.getElementById('consentPrivacy').checked;
+
+    if (!consentBg || !consentCpp || !consentPriv) {
+      alert("모든 필수 동의 및 서약 항목에 체크해 주세요.");
+      return;
+    }
+
+    if (!name || !role || !dob || !phone || !email || !address) {
+      alert("모든 필수 항목을 입력해 주세요.");
+      return;
+    }
+
+    if (signaturePad.isEmpty()) {
+      alert("서명란에 디지털 서명을 입력해 주세요.");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    document.getElementById('loadingOverlay').style.display = 'flex';
+
+    const payload = {
+      department: "유아부 (The Sprouts of Jesus)",
+      adminEmail: ADMIN_EMAIL,
+      teacherName: name,
+      teacherRole: role,
+      teacherDob: dob,
+      teacherPhone: phone,
+      teacherEmail: email,
+      teacherAddress: address,
+      backgroundCheckConsent: "동의 완료",
+      cppConsent: "서약 완료",
+      signatureData: signaturePad.toDataURL(),
+      submittedAt: new Date().toLocaleString('ko-KR', { timeZone: 'America/Chicago' })
+    };
+
+    try {
+      const response = await fetch(GAS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+
+      const resJson = await response.json();
+      document.getElementById('loadingOverlay').style.display = 'none';
+
+      if (resJson.result === "success") {
+        alert("🎉 유아부 교사 서약서가 성공적으로 제출되었습니다!\n\n서명된 PDF 사본이 선생님 이메일과 담당자(preschool@lcaustin.org)에게 발송되었으며, 구글 드라이브에 안전하게 보관되었습니다.");
+        window.location.reload();
+      } else {
+        alert("서약서 저장 중 오류가 발생했습니다: " + resJson.message);
+        submitBtn.disabled = false;
+      }
+
+    } catch (err) {
+      document.getElementById('loadingOverlay').style.display = 'none';
+      submitBtn.disabled = false;
+      alert("네트워크 통신 중 문제가 발생했습니다. 인터넷 연결을 확인하신 후 다시 시도해 주세요.");
+      console.error(err);
+    }
+  }
+</script>
+
+</body>
+</html>
