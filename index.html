@@ -50,14 +50,14 @@
     /* Hero Header */
     .hero-header {
       background: linear-gradient(135deg, #fff0f7 0%, #fce7f3 60%, #fbcfe8 100%);
-      padding: 32px 28px 26px 28px;
+      padding: 30px 28px 24px 28px;
       text-align: center;
       border-bottom: 2px solid #fbcfe8;
     }
 
     .official-logo {
-      width: 105px;
-      height: 105px;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
       margin: 0 auto 10px auto;
       display: block;
@@ -73,8 +73,8 @@
       background: #ffffff;
       color: var(--brand-pink-deep);
       font-weight: 800;
-      font-size: 11.5px;
-      padding: 3px 14px;
+      font-size: 11px;
+      padding: 3px 12px;
       border-radius: 20px;
       margin-bottom: 6px;
       letter-spacing: 0.8px;
@@ -82,15 +82,15 @@
     }
 
     .hero-title {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
       color: var(--navy-900);
       letter-spacing: -0.5px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .hero-subtitle {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--brand-pink-deep);
       font-weight: 700;
       letter-spacing: 1px;
@@ -98,30 +98,30 @@
 
     /* Content Body */
     .content-body {
-      padding: 30px 36px 14px 36px;
+      padding: 28px 36px 12px 36px;
     }
 
     .section-block {
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     h2 {
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 800;
       color: var(--navy-900);
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       border-bottom: 2px solid var(--brand-pink-subtle);
-      padding-bottom: 6px;
+      padding-bottom: 5px;
     }
 
     h2::before {
       content: '';
       display: inline-block;
       width: 5px;
-      height: 18px;
+      height: 17px;
       background: var(--brand-pink-primary);
       border-radius: 4px;
     }
@@ -138,7 +138,7 @@
       margin-bottom: 10px;
     }
 
-    li { margin-bottom: 5px; }
+    li { margin-bottom: 4px; }
 
     /* Quote Card */
     .quote-card {
@@ -146,7 +146,7 @@
       border-left: 4px solid var(--brand-pink-primary);
       border-radius: 0 10px 10px 0;
       padding: 12px 16px;
-      margin: 10px 0 14px 0;
+      margin: 10px 0 12px 0;
       color: #831843;
       font-size: 13px;
       line-height: 1.55;
@@ -157,14 +157,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin: 12px 0;
+      margin: 10px 0;
     }
 
     .role-card {
       background: #fffdfa;
       border: 1.5px solid var(--brand-pink);
       border-radius: 10px;
-      padding: 14px 16px;
+      padding: 12px 14px;
     }
 
     .role-badge {
@@ -175,12 +175,12 @@
       font-weight: 800;
       padding: 2px 8px;
       border-radius: 6px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .role-card strong {
       display: block;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--navy-900);
       margin-bottom: 4px;
     }
@@ -214,7 +214,7 @@
     .covenant-card {
       background: #fffbfe;
       border-top: 2px solid var(--brand-pink);
-      padding: 28px 36px;
+      padding: 26px 36px;
       position: relative;
     }
 
@@ -222,11 +222,11 @@
       background: #ffffff;
       border: 1.5px solid var(--brand-pink);
       border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 16px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
       font-size: 13px;
       color: var(--navy-900);
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     /* Consent Checkboxes */
@@ -234,54 +234,56 @@
       background: #ffffff;
       border: 1px solid var(--brand-pink);
       border-radius: 8px;
-      padding: 14px 16px;
-      margin-bottom: 18px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
     }
 
     .consent-item {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       cursor: pointer;
     }
 
-    .consent-item:last-child {
-      margin-bottom: 0;
-    }
+    .consent-item:last-child { margin-bottom: 0; }
 
     .consent-item input[type="checkbox"] {
       margin-top: 3px;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       accent-color: var(--brand-pink-primary);
       cursor: pointer;
     }
 
     .consent-text {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--navy-900);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
-    .form-grid {
+    /* Form Layouts */
+    .form-grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+    }
+
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .form-group {
       margin-bottom: 12px;
     }
 
-    .form-group.full-width {
-      grid-column: span 2;
-    }
-
     .form-group label {
       display: block;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--navy-900);
       margin-bottom: 4px;
@@ -289,10 +291,10 @@
 
     .form-input, .form-select {
       width: 100%;
-      padding: 9px 12px;
+      padding: 8px 12px;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
-      font-size: 13.5px;
+      font-size: 13px;
       background: #ffffff;
       font-family: inherit;
       color: var(--navy-900);
@@ -314,7 +316,7 @@
 
     canvas {
       width: 100%;
-      height: 130px;
+      height: 125px;
       border-radius: 10px;
       cursor: crosshair;
     }
@@ -399,8 +401,8 @@
         background: #ffffff;
         padding: 0;
         color: #000000;
-        font-size: 10pt;
-        line-height: 1.4;
+        font-size: 9.5pt;
+        line-height: 1.35;
       }
       .app-container {
         border: none;
@@ -409,31 +411,31 @@
         border-radius: 0;
       }
       .hero-header {
-        padding: 10px 20px;
+        padding: 8px 16px;
         background: #fafafa !important;
         -webkit-print-color-adjust: exact;
         border-bottom: 1.5pt solid #ddd;
       }
       .official-logo {
-        width: 55px;
-        height: 55px;
-        margin-bottom: 4px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 3px;
       }
-      .hero-title { font-size: 14pt; }
+      .hero-title { font-size: 13.5pt; }
       .content-body, .covenant-card {
-        padding: 8px 20px;
+        padding: 6px 18px;
       }
-      .section-block { margin-bottom: 8px; }
-      h2 { font-size: 11.5pt; margin-bottom: 4px; padding-bottom: 2px; }
-      p, li { font-size: 9pt; margin-bottom: 2px; }
+      .section-block { margin-bottom: 6px; }
+      h2 { font-size: 11pt; margin-bottom: 3px; padding-bottom: 2px; }
+      p, li { font-size: 8.5pt; margin-bottom: 2px; }
       .quote-card, .policy-item, .role-card, .pledge-box {
         border: 1px solid #ddd !important;
         background: #fafafa !important;
         -webkit-print-color-adjust: exact;
-        padding: 5px 8px;
-        margin: 3px 0;
+        padding: 4px 8px;
+        margin: 2px 0;
       }
-      .role-grid { gap: 6px; margin: 3px 0; }
+      .role-grid { gap: 6px; margin: 2px 0; }
       .page-break {
         page-break-after: always;
         break-after: page;
@@ -447,16 +449,16 @@
         display: table !important;
         width: 100%;
         border-collapse: collapse;
-        margin-top: 8px;
+        margin-top: 6px;
       }
       .print-only-table th, .print-only-table td {
         border: 1px solid #64748b;
-        padding: 5px 8px;
-        font-size: 9pt;
+        padding: 4px 6px;
+        font-size: 8.5pt;
       }
       .print-only-table th {
         background-color: #f1f5f9 !important;
-        width: 22%;
+        width: 20%;
         text-align: left;
       }
     }
@@ -465,8 +467,7 @@
       body { padding: 0; }
       .app-container { border-radius: 0; border: none; }
       .content-body, .covenant-card { padding: 18px 14px; }
-      .role-grid, .form-grid { grid-template-columns: 1fr; }
-      .form-group.full-width { grid-column: span 1; }
+      .role-grid, .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -606,7 +607,8 @@
         </label>
       </div>
 
-      <div class="form-grid">
+      <!-- Basic Info (2-Col) -->
+      <div class="form-grid-2">
         <div class="form-group">
           <label for="teacherName">성명 (Full Name) *</label>
           <input type="text" id="teacherName" class="form-input" placeholder="예: 김주은" required>
@@ -620,7 +622,9 @@
             <option value="보조교사 (Assistant Teacher)">보조교사 (Assistant Teacher)</option>
           </select>
         </div>
+      </div>
 
+      <div class="form-grid-2">
         <div class="form-group">
           <label for="teacherDob">생년월일 (Date of Birth) *</label>
           <input type="text" id="teacherDob" class="form-input" placeholder="MM/DD/YYYY 또는 YYYY.MM.DD" required>
@@ -630,19 +634,44 @@
           <label for="teacherPhone">연락처 (Phone Number) *</label>
           <input type="tel" id="teacherPhone" class="form-input" placeholder="512-000-0000" required>
         </div>
+      </div>
 
+      <div class="form-group">
+        <label for="teacherEmail">이메일 (Email Address) *</label>
+        <input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required>
+      </div>
+
+      <!-- Address Breakdown -->
+      <div class="form-grid-2">
         <div class="form-group">
-          <label for="teacherEmail">이메일 (Email Address) *</label>
-          <input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required>
+          <label for="street1">길 주소 (Street Address Line 1) *</label>
+          <input type="text" id="street1" class="form-input" placeholder="예: 301 W Anderson Ln" required>
         </div>
 
         <div class="form-group">
-          <label for="teacherAddress">거주지 주소 (Home Address) *</label>
-          <input type="text" id="teacherAddress" class="form-input" placeholder="Street, City, State, ZIP" required>
+          <label for="street2">상세 주소 (Street Address Line 2 - Apt, Suite 등)</label>
+          <input type="text" id="street2" class="form-input" placeholder="예: Apt 104, Suite B (선택사항)">
         </div>
       </div>
 
-      <div class="form-group full-width">
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label for="city">도시 (City) *</label>
+          <input type="text" id="city" class="form-input" placeholder="예: Austin, Cedar Park" required>
+        </div>
+
+        <div class="form-group">
+          <label for="state">주 (State) *</label>
+          <input type="text" id="state" class="form-input" value="TX" placeholder="TX" required>
+        </div>
+
+        <div class="form-group">
+          <label for="zipCode">우편번호 (Zip Code) *</label>
+          <input type="text" id="zipCode" class="form-input" placeholder="78752" required>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>전자 서명 (Digital Signature - 마우스나 터치로 서명해주세요) *</label>
         <div class="signature-pad-wrapper">
           <button type="button" class="clear-btn" onclick="clearSig()">서명 지우기</button>
@@ -659,7 +688,7 @@
         <th colspan="4" style="background-color: #fce7f3; text-align: center; font-weight: bold;">[법적 안전 및 사역 동의 서약]</th>
       </tr>
       <tr>
-        <td colspan="4" style="font-size: 8.5pt;">
+        <td colspan="4" style="font-size: 8pt;">
           ✓ [동의] 아동 보호를 위한 신원 조회(Background Check) 진행 및 관련 행정 절차에 동의합니다.<br>
           ✓ [서약] 아동보호 안전 교육(CPP) 이수, 의무 보고자(Mandatory Reporter) 준수 및 비밀유지 의무를 성실히 이행합니다.
         </td>
@@ -678,9 +707,15 @@
       </tr>
       <tr>
         <th>이메일</th>
-        <td></td>
-        <th>거주 주소</th>
-        <td></td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <th>거주지 주소</th>
+        <td colspan="3" style="font-size: 8pt;">
+          길 주소 (Line 1): __________________________________________________<br>
+          상세 주소 (Line 2): ________________________________________________<br>
+          도시 (City): ______________ &nbsp;&nbsp; 주 (State): _______ &nbsp;&nbsp; Zip: _________
+        </td>
       </tr>
       <tr>
         <th>서약 일자</th>
@@ -688,7 +723,7 @@
       </tr>
       <tr>
         <th>자필 서명</th>
-        <td colspan="3" style="height: 45px; vertical-align: bottom; text-align: right; color: #94a3b8;">
+        <td colspan="3" style="height: 40px; vertical-align: bottom; text-align: right; color: #94a3b8;">
           (인 또는 서명) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>
       </tr>
@@ -707,7 +742,6 @@
 </div>
 
 <script>
-  // 배포하신 웹앱 URL 연결 완료
   const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyEoowETKSQ84SKBWQHUSRFYH8j1x9LsPwFf6U6yqWJA3_-tCLGoxmkGwvQisDvQF7M/exec";
   const ADMIN_EMAIL = "preschool@lcaustin.org";
   let signaturePad;
@@ -782,7 +816,13 @@
     const dob = document.getElementById('teacherDob').value.trim();
     const phone = document.getElementById('teacherPhone').value.trim();
     const email = document.getElementById('teacherEmail').value.trim();
-    const address = document.getElementById('teacherAddress').value.trim();
+
+    const street1 = document.getElementById('street1').value.trim();
+    const street2 = document.getElementById('street2').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value.trim();
+    const zip = document.getElementById('zipCode').value.trim();
+
     const submitBtn = document.getElementById('submitBtn');
 
     const consentBg = document.getElementById('consentBackground').checked;
@@ -794,7 +834,7 @@
       return;
     }
 
-    if (!name || !role || !dob || !phone || !email || !address) {
+    if (!name || !role || !dob || !phone || !email || !street1 || !city || !state || !zip) {
       alert("모든 필수 항목을 입력해 주세요.");
       return;
     }
@@ -815,7 +855,11 @@
       teacherDob: dob,
       teacherPhone: phone,
       teacherEmail: email,
-      teacherAddress: address,
+      street1: street1,
+      street2: street2,
+      city: city,
+      state: state,
+      zipCode: zip,
       backgroundCheckConsent: "동의 완료",
       cppConsent: "서약 완료",
       signatureData: signaturePad.toDataURL(),
